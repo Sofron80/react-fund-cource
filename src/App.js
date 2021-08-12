@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import PostList from './components/PostList';
 import './styles/App.css';
-import MyButton from './components/UI/button/MyButton';
-import MyInput from './components/UI/input/MyInput';
+import MyForm from './components/MyForm';
 
 function App() {
   const [posts, setPosts] = useState([
@@ -22,22 +21,7 @@ function App() {
 
   return (
     <div className="App">
-      <form>
-        {/*Управляемый компонент*/}
-        <MyInput
-          value={post.title}
-          onChange={(e) => setPost({ ...post, title: e.target.value })}
-          type="text"
-          placeholder="заголовок"
-        />
-        <MyInput
-          value={post.body}
-          onChange={(e) => setPost({ ...post, body: e.target.value })}
-          type="text"
-          placeholder="Описание"
-        />
-        <MyButton onClick={addNewPost}>Добавить пост</MyButton>
-      </form>
+      <MyForm props={{ post, setPost, addNewPost }} />
       <PostList posts={posts} title="Список постов JS" />
     </div>
   );
