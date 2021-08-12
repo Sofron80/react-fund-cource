@@ -1,9 +1,18 @@
-import React from 'react';
-import MyButton from './UI/button/MyButton';
-import MyInput from './UI/input/MyInput';
+import React, { useState } from 'react'
+import MyButton from './UI/button/MyButton'
+import MyInput from './UI/input/MyInput'
 
-const MyForm = ({ props }) => {
-  const { post, addNewPost, setPost } = props;
+const MyForm = ({ callback }) => {
+  const [post, setPost] = useState({ title: '', body: '' })
+
+  const addNewPost = (e) => {
+    e.preventDefault()
+    if (!post.title.trim() || !post.body.trim()) return
+
+    callback(post)
+    setPost({ title: '', body: '' })
+  }
+
   return (
     <form>
       {/*Управляемый компонент*/}
@@ -21,7 +30,7 @@ const MyForm = ({ props }) => {
       />
       <MyButton onClick={addNewPost}>Добавить пост</MyButton>
     </form>
-  );
-};
+  )
+}
 
-export default MyForm;
+export default MyForm
