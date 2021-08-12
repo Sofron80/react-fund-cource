@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
-import PostList from './components/PostList'
 import MyForm from './components/MyForm'
+import PostList from './components/PostList'
 import './styles/App.css'
 
 function App() {
