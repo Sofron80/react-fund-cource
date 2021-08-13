@@ -8,7 +8,6 @@ const MyForm = ({ callback }) => {
   const addNewPost = (e) => {
     e.preventDefault()
     if (!post.title.trim() || !post.body.trim()) return
-
     callback(post)
     setPost({ title: '', body: '' })
   }
